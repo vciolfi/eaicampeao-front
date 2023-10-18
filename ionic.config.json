@@ -1,0 +1,7 @@
+{
+  "name": "e_ai_campeao-front",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
