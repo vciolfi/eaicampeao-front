@@ -1,0 +1,84 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Cliente</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Cliente</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+   <!-- lista dos clientes -->
+  <ion-list>
+     <!-- ng for percorre a lista de clientes -->
+
+    <ion-item-sliding *ngFor="let client of clientes; index as i">
+      <ion-item>
+        <ion-text>
+          <ion-label>{{ client.nome }}</ion-label>
+          <ion-note>{{ client.endereco }}</ion-note>
+        </ion-text>
+        <ion-label slot="end">{{ client.telefone }}</ion-label>
+      </ion-item>
+  
+      <ion-item-options>
+        <ion-item-option color="danger" (click)="deleteClient(client.nome)">Apagar</ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+
+  <ion-modal trigger="open-modal" (willDismiss)="onWillDismiss($event)">
+    <ng-template>
+      <ion-header>
+        <ion-toolbar>
+          <ion-buttons slot="start">
+            <ion-button (click)="cancel()">Cancelar</ion-button>
+          </ion-buttons>
+          <ion-title>Novo Contato</ion-title>
+          <ion-buttons slot="end">
+            <ion-button (click)="confirm()" [strong]="true">Salvar</ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content class="ion-padding">
+        <ion-item>
+          <ion-input
+            label="Nome"
+            labelPlacement="stacked"
+            type="text"
+            placeholder="Digite o nome"
+            [(ngModel)]="client.nome"
+          ></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-input
+            label="Endereço"
+            labelPlacement="stacked"
+            type="text"
+            placeholder="Digite o endereço"
+            [(ngModel)]="client.endereco"
+          ></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-input
+            label="Telefone"
+            labelPlacement="stacked"
+            type="text"
+            placeholder="Digite o telefone"
+            [(ngModel)]="client.telefone"
+          ></ion-input>
+        </ion-item>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
+
+  <ion-fab slot="fixed" vertical="bottom" horizontal="end">
+    <ion-fab-button id="open-modal">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+</ion-content>
