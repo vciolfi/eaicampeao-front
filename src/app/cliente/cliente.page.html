@@ -1,6 +1,7 @@
-<ion-header [translucent]="true">
+<ion-header [translucent]="true" class="ion-no-border">
   <ion-toolbar>
-    <ion-title>Cliente</ion-title>
+    <ion-title>
+      <ion-icon name="people"></ion-icon> Cliente</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -30,6 +31,8 @@
     </ion-item-sliding>
   </ion-list>
 
+  <!-- modal onde adiciona novos clientes -->
+  <!-- ele é acionado pelo trigger open-modal -->
   <ion-modal trigger="open-modal" (willDismiss)="onWillDismiss($event)">
     <ng-template>
       <ion-header>
@@ -75,7 +78,9 @@
     </ng-template>
   </ion-modal>
 
+  <!-- ion-fab é o botao de adicionar cliente -->
   <ion-fab slot="fixed" vertical="bottom" horizontal="end">
+    <!-- o id open-modal abre o modal -->
     <ion-fab-button id="open-modal">
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>
