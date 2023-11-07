@@ -12,9 +12,9 @@
     </ion-toolbar>
   </ion-header>
 
-   <!-- lista dos clientes -->
-  <ion-list>
-     <!-- ng for percorre a lista de clientes -->
+  <!-- lista dos clientes -->
+  <ion-list class="ion-padding">
+    <!-- ng for percorre a lista de clientes -->
 
     <ion-item-sliding *ngFor="let client of clientes; index as i">
       <ion-item>
@@ -24,7 +24,7 @@
         </ion-text>
         <ion-label slot="end">{{ client.telefone }}</ion-label>
       </ion-item>
-  
+
       <ion-item-options>
         <ion-item-option color="danger" (click)="deleteClient(client.nome)">Apagar</ion-item-option>
       </ion-item-options>

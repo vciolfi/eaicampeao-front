@@ -8,16 +8,15 @@ import { Client } from '../interface/cliente';
   styleUrls: ['./cliente.page.scss'],
 })
 export class ClientePage implements OnInit {
-  
+
   @ViewChild(IonModal) modal!: IonModal;
 
   public clientes: Client[] = [];
   public client: Client = { nome: '', endereco: '', telefone: '' };
 
   constructor() { }
-  
+
   ngOnInit() {
-    // this.clientes = this.clienteService.getClientes();
     this.clientes = [
       { nome: 'Vinicius Ciolfi', endereco: 'Qualquer coisa', telefone: '(11) 9 9999-8787' },
       { nome: 'Vinicius A Ciolfi', endereco: 'Qualquer coisa 1', telefone: '(11) 9 9999-8787' },
