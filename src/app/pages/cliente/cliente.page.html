@@ -1,29 +1,29 @@
 <ion-header [translucent]="true" class="ion-no-border">
   <ion-toolbar>
     <ion-title>
-      <ion-icon name="people"></ion-icon> Fornecedores</ion-title>
+      <ion-icon name="people"></ion-icon> clientes</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Fornecedores</ion-title>
+      <ion-title size="large">clientes</ion-title>
     </ion-toolbar>
   </ion-header>
 
   <ion-list class="ion-padding">
-    <ion-item-sliding *ngFor="let fornecedor of fornecedores; index as i">
+    <ion-item-sliding *ngFor="let client of clientes; index as i">
       <ion-item>
         <ion-text>
-          <ion-label>{{ fornecedor.nome }}</ion-label>
-          <ion-note>{{ fornecedor.endereco }}</ion-note>
+          <ion-label color="primary">{{ client.nome }}</ion-label>
+          <ion-note>{{ client.endereco }}</ion-note>
         </ion-text>
-        <ion-label slot="end">{{ fornecedor.telefone }}</ion-label>
+        <ion-note color="secondary" slot="end">{{ client.telefone }}</ion-note>
       </ion-item>
 
       <ion-item-options>
-        <ion-item-option color="danger" (click)="deleteFornecedor(fornecedor.nome)">Apagar</ion-item-option>
+        <ion-item-option color="danger" (click)="deleteClient(client.nome)">Apagar</ion-item-option>
       </ion-item-options>
     </ion-item-sliding>
   </ion-list>
@@ -35,7 +35,7 @@
           <ion-buttons slot="start">
             <ion-button (click)="cancel()">Cancelar</ion-button>
           </ion-buttons>
-          <ion-title>Novo Contato</ion-title>
+          <ion-title>Novo Cliente</ion-title>
           <ion-buttons slot="end">
             <ion-button (click)="confirm()" [strong]="true">Salvar</ion-button>
           </ion-buttons>
@@ -48,7 +48,7 @@
             labelPlacement="stacked"
             type="text"
             placeholder="Digite o nome"
-            [(ngModel)]="fornecedor.nome"
+            [(ngModel)]="client.nome"
           ></ion-input>
         </ion-item>
         <ion-item>
@@ -57,7 +57,7 @@
             labelPlacement="stacked"
             type="text"
             placeholder="Digite o endereço"
-            [(ngModel)]="fornecedor.endereco"
+            [(ngModel)]="client.endereco"
           ></ion-input>
         </ion-item>
         <ion-item>
@@ -66,13 +66,12 @@
             labelPlacement="stacked"
             type="text"
             placeholder="Digite o telefone"
-            [(ngModel)]="fornecedor.telefone"
+            [(ngModel)]="client.telefone"
           ></ion-input>
         </ion-item>
       </ion-content>
     </ng-template>
   </ion-modal>
-
 
   <ion-fab slot="fixed" vertical="bottom" horizontal="end">
     <ion-fab-button id="open-modal">

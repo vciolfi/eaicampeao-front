@@ -1,0 +1,54 @@
+<ion-header [translucent]="true" class="ion-no-border">
+  <ion-toolbar color="medium">
+    <ion-title>entrar</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" color="medium">
+  <ion-header collapse="condense">
+    <ion-toolbar color="medium">
+      <ion-title size="large">entrar</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-card color="medium">
+    <img src="../../../assets/logo.png" alt="logo">
+    <ion-card-content>
+      <form [formGroup]="loginForm" autocomplete="off">
+        <ion-input class="ion-margin-bottom"
+          formControlName="email"
+          [clearInput]="true"
+          fill="outline"
+          labelPlacement="floating"
+          label="e-mail"
+          type="email"
+          placeholder="email@domain.com">
+        </ion-input>
+
+        <ion-input class="ion-margin-bottom"
+          formControlName="password"
+          [clearInput]="true"
+          fill="outline"
+          labelPlacement="floating"
+          label="senha"
+          type="password">
+        </ion-input>
+      </form>
+    </ion-card-content>
+
+    <section class="action ion-padding">
+      <ion-button
+        (click)="onSubmit()">
+        entrar
+      </ion-button>
+
+      <ion-button
+        size="small"
+        fill="clear"
+        routerLink="/register"
+        routerLinkActive="active">
+          não possuí uma conta? Criar conta
+      </ion-button>
+    </section>
+  </ion-card>
+</ion-content>

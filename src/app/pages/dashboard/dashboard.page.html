@@ -1,0 +1,123 @@
+<ion-header [translucent]="true" class="ion-no-border">
+  <ion-toolbar color="medium">
+    <ion-title>visão geral</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" color="medium">
+  <ion-header collapse="condense">
+    <ion-toolbar color="medium">
+      <ion-title size="large">visão geral</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-row class="dash-row" color="primary">
+    <ion-col>
+      <ion-card lines="none" class="ion-no-padding">
+        <ion-card-content>
+          <h2 class="ion-text-uppercase">
+            <ion-icon name="people-outline"></ion-icon>
+            {{ clientes.length }}
+          </h2>
+          <ion-note>clientes</ion-note>
+        </ion-card-content>
+
+        <ion-button
+          color="secondary"
+          size="small"
+          fill="clear"
+          routerLink="/clientes"
+          routerLinkActive="active">
+            ver mais
+          <ion-icon slot="end" name="chevron-forward-outline"></ion-icon>
+        </ion-button>
+        <div id="grad1"></div>
+      </ion-card>
+    </ion-col>
+
+    <ion-col>
+      <ion-card lines="none" class="ion-no-padding">
+        <ion-card-content>
+          <h2 class="ion-text-uppercase">
+            <ion-icon name="bag-handle-outline"></ion-icon>
+            {{ produtos.length }}
+          </h2>
+          <ion-note>produtos</ion-note>
+        </ion-card-content>
+
+        <ion-button
+          color="secondary"
+          size="small"
+          fill="clear"
+          routerLink="/produtos"
+          routerLinkActive="active">
+            ver mais
+          <ion-icon slot="end" name="chevron-forward-outline"></ion-icon>
+        </ion-button>
+        <div id="grad1"></div>
+      </ion-card>
+    </ion-col>
+
+    <ion-col>
+      <ion-card lines="none" class="ion-no-padding">
+        <ion-card-content>
+          <h2 class="ion-text-uppercase">
+            <ion-icon name="archive-outline"></ion-icon>
+            {{ fornecedores.length }}
+          </h2>
+          <ion-note>fornecedores</ion-note>
+        </ion-card-content>
+
+        <ion-button
+          color="secondary"
+          size="small"
+          fill="clear"
+          routerLink="/fornecedores"
+          routerLinkActive="active">
+            ver mais
+          <ion-icon slot="end" name="chevron-forward-outline"></ion-icon>
+        </ion-button>
+        <div id="grad1"></div>
+      </ion-card>
+    </ion-col>
+
+    <ion-col>
+      <ion-card lines="none" class="ion-no-padding">
+        <ion-card-content>
+          <h2 class="ion-text-uppercase">
+            <ion-icon name="receipt-outline"></ion-icon>
+            {{ pedidos.length }}
+          </h2>
+          <ion-note>pedidos</ion-note>
+        </ion-card-content>
+
+        <ion-button
+          color="secondary"
+          size="small"
+          fill="clear"
+          routerLink="/pedidos"
+          routerLinkActive="active">
+            ver mais
+          <ion-icon slot="end" name="chevron-forward-outline"></ion-icon>
+        </ion-button>
+        <div id="grad1"></div>
+      </ion-card>
+    </ion-col>
+  </ion-row>
+
+  <p class="ion-no-margin ion-padding-top ion-padding-start">últimos pedidos</p>
+  <ion-note class="ion-padding-start">seus últimos pedidos criados</ion-note>
+
+  <ion-list lines="none">
+    <ion-card color="medium" *ngFor="let pedido of pedidos; let i = index">
+      <ion-item-group>
+        <ion-item-divider class="ion-no-border" color="medium">
+          <ion-note>cliente</ion-note>
+        </ion-item-divider>
+        <ion-item lines="none" detail="true">
+          <ion-label>{{ pedido.cliente.nome }}</ion-label>
+        </ion-item>
+      </ion-item-group>
+    </ion-card>
+  </ion-list>
+</ion-content>

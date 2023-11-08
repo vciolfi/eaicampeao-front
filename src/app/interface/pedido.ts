@@ -3,6 +3,5 @@ import { Produto } from "./produto";
 
 export interface Pedido {
     cliente: Client;
-    produto: Produto;
-    
+    produtos: Produto[];
 }

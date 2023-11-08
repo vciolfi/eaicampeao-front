@@ -1,46 +1,42 @@
 <ion-header [translucent]="true" class="ion-no-border">
   <ion-toolbar>
     <ion-title>
-      <ion-icon name="people"></ion-icon> Cliente</ion-title>
+      <ion-icon name="people"></ion-icon> fornecedores</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Cliente</ion-title>
+      <ion-title size="large">fornecedores</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <!-- lista dos clientes -->
   <ion-list class="ion-padding">
-    <!-- ng for percorre a lista de clientes -->
-
-    <ion-item-sliding *ngFor="let client of clientes; index as i">
+    <ion-item-sliding *ngFor="let fornecedor of fornecedores; index as i">
       <ion-item>
         <ion-text>
-          <ion-label>{{ client.nome }}</ion-label>
-          <ion-note>{{ client.endereco }}</ion-note>
+          <ion-label>{{ fornecedor.nome }}</ion-label>
+          <ion-note>{{ fornecedor.endereco }}</ion-note>
         </ion-text>
-        <ion-label slot="end">{{ client.telefone }}</ion-label>
+        <ion-note color="secondary" slot="end">{{ fornecedor.telefone }}</ion-note>
       </ion-item>
 
       <ion-item-options>
-        <ion-item-option color="danger" (click)="deleteClient(client.nome)">Apagar</ion-item-option>
+        <ion-item-option color="tertiary" (click)="editFornecedor(fornecedor)" id>Editar</ion-item-option>
+        <ion-item-option color="danger" (click)="deleteFornecedor(fornecedor.nome)">Apagar</ion-item-option>
       </ion-item-options>
     </ion-item-sliding>
   </ion-list>
 
-  <!-- modal onde adiciona novos clientes -->
-  <!-- ele é acionado pelo trigger open-modal -->
-  <ion-modal trigger="open-modal" (willDismiss)="onWillDismiss($event)">
+  <ion-modal [isOpen]="isModalOpen" (willDismiss)="onWillDismiss($event)">
     <ng-template>
       <ion-header>
         <ion-toolbar>
           <ion-buttons slot="start">
             <ion-button (click)="cancel()">Cancelar</ion-button>
           </ion-buttons>
-          <ion-title>Novo Contato</ion-title>
+          <ion-title>Novo Fornecedor</ion-title>
           <ion-buttons slot="end">
             <ion-button (click)="confirm()" [strong]="true">Salvar</ion-button>
           </ion-buttons>
@@ -52,8 +48,8 @@
             label="Nome"
             labelPlacement="stacked"
             type="text"
-            placeholder="Digite o nome"
-            [(ngModel)]="client.nome"
+            placeholder="digite o nome"
+            [(ngModel)]="fornecedor.nome"
           ></ion-input>
         </ion-item>
         <ion-item>
@@ -61,8 +57,8 @@
             label="Endereço"
             labelPlacement="stacked"
             type="text"
-            placeholder="Digite o endereço"
-            [(ngModel)]="client.endereco"
+            placeholder="digite o endereço"
+            [(ngModel)]="fornecedor.endereco"
           ></ion-input>
         </ion-item>
         <ion-item>
@@ -70,18 +66,17 @@
             label="Telefone"
             labelPlacement="stacked"
             type="text"
-            placeholder="Digite o telefone"
-            [(ngModel)]="client.telefone"
+            placeholder="digite o telefone"
+            [(ngModel)]="fornecedor.telefone"
           ></ion-input>
         </ion-item>
       </ion-content>
     </ng-template>
   </ion-modal>
 
-  <!-- ion-fab é o botao de adicionar cliente -->
+
   <ion-fab slot="fixed" vertical="bottom" horizontal="end">
-    <!-- o id open-modal abre o modal -->
-    <ion-fab-button id="open-modal">
+    <ion-fab-button (click)="setOpen(true)">
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>
   </ion-fab>

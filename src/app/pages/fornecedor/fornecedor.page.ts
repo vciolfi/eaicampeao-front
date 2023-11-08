@@ -1,6 +1,7 @@
+import { FornecedoresService } from './../../services/fornecedores.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { IonModal } from '@ionic/angular';
-import { Fornecedor } from '../interface/fornecedor';
+import { Fornecedor } from '../../interface/fornecedor';
 
 @Component({
   selector: 'app-fornecedor',
@@ -14,19 +15,21 @@ export class FornecedorPage implements OnInit {
 
   public fornecedores: Fornecedor[] = [];
   public fornecedor: Fornecedor = { nome: '', endereco: '', telefone: '' };
+  public isModalOpen: boolean = false;
 
-  constructor() { }
+  constructor(private fornecedoresService: FornecedoresService) { }
 
   ngOnInit() {
-    this.fornecedores = [
-      { nome: 'Vinicius Ciolfi', endereco: 'Qualquer coisa', telefone: '(11) 9 9999-8787' },
-      { nome: 'Vinicius A Ciolfi', endereco: 'Qualquer coisa 1', telefone: '(11) 9 9999-8787' },
-      { nome: 'Vinicius B Ciolfi', endereco: 'Qualquer coisa 2', telefone: '(11) 9 9999-8786' },
-    ]
+    this.fornecedoresService.getFornecedores().subscribe(fornecedores => this.fornecedores = fornecedores);
   }
 
   addNewFornecedor(fornecedor: Fornecedor) {
     this.fornecedores.push(fornecedor)
+  }
+
+  editFornecedor(fornecedor: Fornecedor) {
+    this.fornecedor = fornecedor;
+    this.setOpen(true);
   }
 
   deleteFornecedor(name: string) {
@@ -37,13 +40,19 @@ export class FornecedorPage implements OnInit {
 
   }
 
+  setOpen(value: boolean) {
+    this.isModalOpen = value;
+  }
+
   cancel() {
     this.modal.dismiss(null, 'cancel');
+    this.setOpen(false)
   }
 
   confirm() {
     this.addNewFornecedor(this.fornecedor);
     this.modal.dismiss(null, 'confirm');
+    this.setOpen(false);
   }
 }
 

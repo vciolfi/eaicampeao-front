@@ -1,27 +1,45 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from './auth.guard';
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'cliente',
+    redirectTo: 'dashboard',
     pathMatch: 'full'
   },
   {
-    path: 'cliente',
-    loadChildren: () => import('./cliente/cliente.module').then( m => m.ClientePageModule)
+    path: 'clientes',
+    canActivate: [AuthGuard],
+    loadChildren: () => import('./pages/cliente/cliente.module').then( m => m.ClientePageModule)
   },
   {
-    path: 'fornecedor',
-    loadChildren: () => import('./fornecedor/fornecedor.module').then( m => m.FornecedorPageModule)
+    path: 'fornecedores',
+    canActivate: [AuthGuard],
+    loadChildren: () => import('./pages/fornecedor/fornecedor.module').then( m => m.FornecedorPageModule)
   },
   {
     path: 'produtos',
-    loadChildren: () => import('./produto/produto.module').then( m => m.ProdutoPageModule)
+    canActivate: [AuthGuard],
+    loadChildren: () => import('./pages/produto/produto.module').then( m => m.ProdutoPageModule)
   },
   {
     path: 'pedidos',
-    loadChildren: () => import('./pedidos/pedidos.module').then( m => m.PedidosPageModule)
+    canActivate: [AuthGuard],
+    loadChildren: () => import('./pages/pedidos/pedidos.module').then( m => m.PedidosPageModule)
+  },
+  {
+    path: 'login',
+    loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule)
+  },
+  {
+    path: 'dashboard',
+    canActivate: [AuthGuard],
+    loadChildren: () => import('./pages/dashboard/dashboard.module').then( m => m.DashboardPageModule)
+  },
+  {
+    path: 'register',
+    loadChildren: () => import('./pages/register/register.module').then( m => m.RegisterPageModule)
   }
 ];
 

@@ -1,15 +1,24 @@
 import { Component } from '@angular/core';
+import { AuthenticationClientService } from './services/authentication-client.service';
+import { AuthenticationService } from './services/authentication.service';
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
+
   public appPages = [
-    { title: 'Cliente', url: '/cliente', icon: 'people' },
-    { title: 'Fornecedor', url: '/fornecedor', icon: 'archive' },
-    { title: 'Produtos', url: '/produtos', icon: 'bag-handle' },
-    { title: 'Pedidos', url: '/pedidos', icon: 'receipt' },
+    { title: 'inicio', url: '/dashboard', icon: 'home' },
+    { title: 'clientes', url: '/clientes', icon: 'people' },
+    { title: 'fornecedores', url: '/fornecedores', icon: 'archive' },
+    { title: 'produtos', url: '/produtos', icon: 'bag-handle' },
+    { title: 'pedidos', url: '/pedidos', icon: 'receipt' },
   ];
-  constructor() {}
+
+  constructor(private authenticationService: AuthenticationService) {}
+
+  logout() {
+    this.authenticationService.logout();
+  }
 }
