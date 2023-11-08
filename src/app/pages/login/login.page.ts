@@ -27,7 +27,7 @@ export class LoginPage implements OnInit {
   }
 
   public getUsers() {
-    this.authenticationClientService.getUsuarios().subscribe(usuarios => this.usuarios = usuarios);
+    // this.authenticationClientService.getUsuarios().subscribe(usuarios => this.usuarios = usuarios);
   }
 
   public onSubmit() {

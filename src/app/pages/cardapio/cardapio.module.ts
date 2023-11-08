@@ -4,17 +4,17 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { ProdutoPageRoutingModule } from './produto-routing.module';
+import { CardapioPageRoutingModule } from './cardapio-routing.module';
 
-import { ProdutoPage } from './produto.page';
+import { CardapioPage } from './cardapio.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    ProdutoPageRoutingModule
+    CardapioPageRoutingModule
   ],
-  declarations: [ProdutoPage]
+  declarations: [CardapioPage]
 })
-export class ProdutoPageModule {}
+export class CardapioPageModule {}

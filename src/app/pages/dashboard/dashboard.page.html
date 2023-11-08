@@ -11,7 +11,76 @@
     </ion-toolbar>
   </ion-header>
 
-  <ion-row class="dash-row" color="primary">
+  <ion-row class="dash-row" color="medium">
+    <ion-col>
+      <ion-card lines="none" class="ion-no-padding">
+        <ion-card-content>
+          <h2 class="ion-text-uppercase">
+            <ion-icon name="receipt-outline"></ion-icon>
+            {{ pedidos.length }}
+          </h2>
+          <ion-note>pedidos</ion-note>
+        </ion-card-content>
+
+        <ion-button
+          color="secondary"
+          size="small"
+          fill="clear"
+          routerLink="/pedidos"
+          routerLinkActive="active">
+            ver mais
+          <ion-icon slot="end" name="chevron-forward-outline"></ion-icon>
+        </ion-button>
+        <div id="grad1"></div>
+      </ion-card>
+    </ion-col>
+
+    <ion-col>
+      <ion-card lines="none" class="ion-no-padding">
+        <ion-card-content>
+          <h2 class="ion-text-uppercase">
+            <ion-icon name="bag-handle-outline"></ion-icon>
+            {{ cardapios.length }}
+          </h2>
+          <ion-note>cardápio</ion-note>
+        </ion-card-content>
+
+        <ion-button
+          color="secondary"
+          size="small"
+          fill="clear"
+          routerLink="/cardapio"
+          routerLinkActive="active">
+            ver mais
+          <ion-icon slot="end" name="chevron-forward-outline"></ion-icon>
+        </ion-button>
+        <div id="grad1"></div>
+      </ion-card>
+    </ion-col>
+
+    <ion-col>
+      <ion-card lines="none" class="ion-no-padding">
+        <ion-card-content>
+          <h2 class="ion-text-uppercase">
+            <ion-icon name="bag-handle-outline"></ion-icon>
+            {{ estoqueProdutos.length }}
+          </h2>
+          <ion-note>estoque</ion-note>
+        </ion-card-content>
+
+        <ion-button
+          color="secondary"
+          size="small"
+          fill="clear"
+          routerLink="/estoque"
+          routerLinkActive="active">
+            ver mais
+          <ion-icon slot="end" name="chevron-forward-outline"></ion-icon>
+        </ion-button>
+        <div id="grad1"></div>
+      </ion-card>
+    </ion-col>
+
     <ion-col>
       <ion-card lines="none" class="ion-no-padding">
         <ion-card-content>
@@ -27,29 +96,6 @@
           size="small"
           fill="clear"
           routerLink="/clientes"
-          routerLinkActive="active">
-            ver mais
-          <ion-icon slot="end" name="chevron-forward-outline"></ion-icon>
-        </ion-button>
-        <div id="grad1"></div>
-      </ion-card>
-    </ion-col>
-
-    <ion-col>
-      <ion-card lines="none" class="ion-no-padding">
-        <ion-card-content>
-          <h2 class="ion-text-uppercase">
-            <ion-icon name="bag-handle-outline"></ion-icon>
-            {{ produtos.length }}
-          </h2>
-          <ion-note>produtos</ion-note>
-        </ion-card-content>
-
-        <ion-button
-          color="secondary"
-          size="small"
-          fill="clear"
-          routerLink="/produtos"
           routerLinkActive="active">
             ver mais
           <ion-icon slot="end" name="chevron-forward-outline"></ion-icon>
@@ -80,29 +126,6 @@
         <div id="grad1"></div>
       </ion-card>
     </ion-col>
-
-    <ion-col>
-      <ion-card lines="none" class="ion-no-padding">
-        <ion-card-content>
-          <h2 class="ion-text-uppercase">
-            <ion-icon name="receipt-outline"></ion-icon>
-            {{ pedidos.length }}
-          </h2>
-          <ion-note>pedidos</ion-note>
-        </ion-card-content>
-
-        <ion-button
-          color="secondary"
-          size="small"
-          fill="clear"
-          routerLink="/pedidos"
-          routerLinkActive="active">
-            ver mais
-          <ion-icon slot="end" name="chevron-forward-outline"></ion-icon>
-        </ion-button>
-        <div id="grad1"></div>
-      </ion-card>
-    </ion-col>
   </ion-row>
 
   <p class="ion-no-margin ion-padding-top ion-padding-start">últimos pedidos</p>
@@ -112,12 +135,30 @@
     <ion-card color="medium" *ngFor="let pedido of pedidos; let i = index">
       <ion-item-group>
         <ion-item-divider class="ion-no-border" color="medium">
-          <ion-note>cliente</ion-note>
+          <ion-note slot="start">cliente</ion-note>
         </ion-item-divider>
-        <ion-item lines="none" detail="true">
+        <ion-item lines="none" detail="true" [routerLink]="['/pedidos/' + pedido.id]">
           <ion-label>{{ pedido.cliente.nome }}</ion-label>
         </ion-item>
       </ion-item-group>
     </ion-card>
+  </ion-list>
+
+  <p class="ion-no-margin ion-padding-top ion-padding-start">cardápio do dia</p>
+  <ion-note class="ion-padding-start">itens no cardápio do dia</ion-note>
+
+  <ion-list lines="none">
+    <ng-container *ngFor="let cardapio of cardapios; let i = index">
+      <ion-card color="medium" *ngIf="cardapio.ativo">
+        <ion-item-group>
+          <ion-item-divider class="ion-no-border" color="medium">
+            <ion-note slot="start">cardápio</ion-note>
+          </ion-item-divider>
+          <ion-item lines="none" detail="true" [routerLink]="['/cardapio/' + cardapio.id]">
+            <ion-label>{{ cardapio.nome }}</ion-label>
+          </ion-item>
+        </ion-item-group>
+      </ion-card>
+    </ng-container>
   </ion-list>
 </ion-content>

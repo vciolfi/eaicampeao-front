@@ -1,6 +1,6 @@
 import { Fornecedor } from "./fornecedor";
 
-export interface Produto {
+export interface EstoqueProduto {
     nome: string;
     quantidade: number;
     fornecedor: Fornecedor;

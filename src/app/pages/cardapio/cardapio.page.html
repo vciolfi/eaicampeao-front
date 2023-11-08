@@ -1,0 +1,75 @@
+<ion-header [translucent]="true" class="ion-no-border">
+  <ion-toolbar color="medium">
+    <ion-title>
+      <ion-icon name="people"></ion-icon> cardápio</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" color="medium">
+  <ion-header collapse="condense">
+    <ion-toolbar color="medium">
+      <ion-title size="large">cardápio</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-list lines="none" color="medium">
+    <ng-container *ngFor="let cardapio of cardapios; let i = index">
+      <ion-card [color]="!cardapio.ativo ? 'medium' : ''">
+        <ion-item-group>
+          <ion-item-divider class="ion-no-border" [color]="!cardapio.ativo ? 'medium' : ''">
+            <ion-note slot="start">cliente</ion-note>
+            <ion-note [color]="!cardapio.ativo ? 'danger' : 'success'" slot="end">
+              {{ cardapio.ativo ? 'ativo' : 'desativado' }}
+            </ion-note>
+          </ion-item-divider>
+          <ion-item lines="none" detail="true" [routerLink]="['/cardapio/' + cardapio.id]">
+            <ion-label>{{ cardapio.nome }}</ion-label>
+          </ion-item>
+        </ion-item-group>
+      </ion-card>
+    </ng-container>
+  </ion-list>
+
+  <ion-modal trigger="open-modal" (willDismiss)="onWillDismiss($event)">
+    <ng-template>
+      <ion-header>
+        <ion-toolbar>
+          <ion-buttons slot="start">
+            <ion-button (click)="cancel()">Cancelar</ion-button>
+          </ion-buttons>
+          <ion-title>Novo Item</ion-title>
+          <ion-buttons slot="end">
+            <ion-button (click)="confirm()" [strong]="true">Salvar</ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-header>
+
+      <ion-content class="ion-padding">
+        <ion-item>
+          <ion-input
+            label="nome do item"
+            labelPlacement="stacked"
+            type="text"
+            placeholder="digite o nome do item"
+            [(ngModel)]="cardapio.nome">
+          </ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-select (ionChange)="handleChange($event)" label="ingredientes" placeholder="selecione os ingredientes" [multiple]="true">
+            <ion-select-option
+              *ngFor="let estoqueProduto of estoqueProdutos"
+              [value]="estoqueProduto">{{ estoqueProduto.nome }}</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
+
+  <ion-fab slot="fixed" vertical="bottom" horizontal="end">
+    <ion-fab-button id="open-modal">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+</ion-content>

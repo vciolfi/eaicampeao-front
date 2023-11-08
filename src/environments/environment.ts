@@ -4,6 +4,8 @@
 
 export const environment = {
   production: false,
+  firebase: {
+  },
   url: 'https://my-json-server.typicode.com/vciolfi/fakeapi-testes'
 };
 

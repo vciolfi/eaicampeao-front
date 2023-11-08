@@ -19,9 +19,9 @@ const routes: Routes = [
     loadChildren: () => import('./pages/fornecedor/fornecedor.module').then( m => m.FornecedorPageModule)
   },
   {
-    path: 'produtos',
+    path: 'estoque',
     canActivate: [AuthGuard],
-    loadChildren: () => import('./pages/produto/produto.module').then( m => m.ProdutoPageModule)
+    loadChildren: () => import('./pages/estoque-produto/estoque-produto.module').then( m => m.EstoqueProdutoPageModule)
   },
   {
     path: 'pedidos',
@@ -40,6 +40,11 @@ const routes: Routes = [
   {
     path: 'register',
     loadChildren: () => import('./pages/register/register.module').then( m => m.RegisterPageModule)
+  },
+  {
+    path: 'cardapio',
+    canActivate: [AuthGuard],
+    loadChildren: () => import('./pages/cardapio/cardapio.module').then( m => m.CardapioPageModule)
   }
 ];
 

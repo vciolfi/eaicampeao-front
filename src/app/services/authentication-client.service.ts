@@ -14,16 +14,16 @@ export class AuthenticationClientService {
   constructor(private http: HttpClient) {
   }
 
-  public getUsuarios = (): Observable<Usuarios[]> =>
-    this.http.get<Usuarios[]>(this.usuariosUrl);
+  // public getUsuarios = (): Observable<Usuarios[]> =>
+  //   this.http.get<Usuarios[]>(this.usuariosUrl);
 
-  private getUsuario = (id: string): Observable<Usuarios> =>
-    this.http.get<Usuarios>(`${this.usuariosUrl}/${id}`);
+  // private getUsuario = (id: string): Observable<Usuarios> =>
+  //   this.http.get<Usuarios>(`${this.usuariosUrl}/${id}`);
 
-  public login(usuarios: Usuarios[], email: string): Observable<Usuarios> {
-    let user = usuarios.filter(usuario => usuario.email === email);
-    return from(this.getUsuario(user[0].id));
-  }
+  // public login(usuarios: Usuarios[], email: string): Observable<Usuarios> {
+  //   let user = usuarios.filter(usuario => usuario.email === email);
+  //   return from(this.getUsuario(user[0].id));
+  // }
 
   public register = (username: string, email: string, password: string): Observable<string> =>
     this.http.post(this.usuariosUrl, { username: username, email: email, password: password }, { responseType: 'text' })

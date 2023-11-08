@@ -1,7 +1,8 @@
 import { Client } from "./cliente";
-import { Produto } from "./produto";
+import { EstoqueProduto } from "./estoque-produto";
 
 export interface Pedido {
+    id: number;
     cliente: Client;
-    produtos: Produto[];
+    estoqueProdutos: EstoqueProduto[];
 }

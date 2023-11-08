@@ -16,14 +16,16 @@ export class AuthenticationService {
   ) {}
 
   public login(users: Usuarios[],email: string): void {
-    this.authenticationClient
-      .login(users, email)
-      .subscribe(token => {
-        localStorage.setItem(this.tokenKey, JSON.stringify(token));
-        this.router.navigate(['/']);
-      },
-      (err) => console.error(err)
-      );
+    localStorage.setItem(this.tokenKey, JSON.stringify({id: 0, username: "teste", email: "teste@teste.com", password: "12345678"}));
+    this.router.navigate(['/']);
+    // this.authenticationClient
+    //   .login(users, email)
+    //   .subscribe(token => {
+    //     localStorage.setItem(this.tokenKey, JSON.stringify(token));
+    //     this.router.navigate(['/']);
+    //   },
+    //   (err) => console.error(err)
+    //   );
   }
 
   public register(username: string, email: string, password: string): void {

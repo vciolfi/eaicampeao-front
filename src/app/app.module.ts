@@ -12,7 +12,7 @@ import { AppComponent } from './app.component';
 import { ClientesService } from './services/clientes.service';
 import { FornecedoresService } from './services/fornecedores.service';
 import { PedidosService } from './services/pedidos.service';
-import { ProdutosService } from './services/produtos.service';
+import { EstoqueProdutosService } from './services/estoque-produtos.service';
 import { TokenInterceptor } from './token.interceptor';
 
 @NgModule({
@@ -32,7 +32,7 @@ import { TokenInterceptor } from './token.interceptor';
     ClientesService,
     FornecedoresService,
     PedidosService,
-    ProdutosService,
+    EstoqueProdutosService,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },
   ],

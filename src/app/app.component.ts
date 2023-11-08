@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { AuthenticationClientService } from './services/authentication-client.service';
 import { AuthenticationService } from './services/authentication.service';
 @Component({
   selector: 'app-root',
@@ -10,9 +9,10 @@ export class AppComponent {
 
   public appPages = [
     { title: 'inicio', url: '/dashboard', icon: 'home' },
+    { title: 'cardapio', url: '/cardapio', icon: 'book' },
     { title: 'clientes', url: '/clientes', icon: 'people' },
     { title: 'fornecedores', url: '/fornecedores', icon: 'archive' },
-    { title: 'produtos', url: '/produtos', icon: 'bag-handle' },
+    { title: 'estoque produtos', url: '/estoque', icon: 'bag-handle' },
     { title: 'pedidos', url: '/pedidos', icon: 'receipt' },
   ];
 
