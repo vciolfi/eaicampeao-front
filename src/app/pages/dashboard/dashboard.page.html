@@ -131,7 +131,7 @@
   <p class="ion-no-margin ion-padding-top ion-padding-start">últimos pedidos</p>
   <ion-note class="ion-padding-start">seus últimos pedidos criados</ion-note>
 
-  <ion-list lines="none">
+  <ion-list lines="none" color="medium">
     <ion-card color="medium" *ngFor="let pedido of pedidos; let i = index">
       <ion-item-group>
         <ion-item-divider class="ion-no-border" color="medium">
@@ -147,7 +147,7 @@
   <p class="ion-no-margin ion-padding-top ion-padding-start">cardápio do dia</p>
   <ion-note class="ion-padding-start">itens no cardápio do dia</ion-note>
 
-  <ion-list lines="none">
+  <ion-list lines="none" color="medium">
     <ng-container *ngFor="let cardapio of cardapios; let i = index">
       <ion-card color="medium" *ngIf="cardapio.ativo">
         <ion-item-group>
